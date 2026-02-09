@@ -8,7 +8,7 @@ interface ResumeViewerProps {
   pdfUrl?: string;
 }
 
-const ResumeViewer = ({ isOpen, onClose, pdfUrl = "/resume.pdf" }: ResumeViewerProps) => {
+const ResumeViewer = ({ isOpen, onClose, pdfUrl = "/AshitoshIngale.pdf" }: ResumeViewerProps) => {
   const [isFullscreen, setIsFullscreen] = useState(false);
 
   if (!isOpen) return null;
@@ -44,7 +44,7 @@ const ResumeViewer = ({ isOpen, onClose, pdfUrl = "/resume.pdf" }: ResumeViewerP
               <FileText size={20} className="text-primary" />
             </div>
             <div>
-              <h3 className="text-sm font-semibold">My Resume</h3>
+              <h3 className="text-sm font-semibold">Ashitosh Krishna Ingale - Resume</h3>
               <p className="text-xs text-muted-foreground">View Only</p>
             </div>
           </div>
@@ -77,29 +77,11 @@ const ResumeViewer = ({ isOpen, onClose, pdfUrl = "/resume.pdf" }: ResumeViewerP
 
         {/* PDF Viewer */}
         <div className="relative h-[calc(100%-73px)] bg-muted/20">
-          {/* Placeholder when no PDF is available */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8">
-            <div className="w-24 h-24 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 animate-float">
-              <FileText size={40} className="text-primary" />
-            </div>
-            <h4 className="text-lg font-semibold mb-2">Resume Preview</h4>
-            <p className="text-sm text-muted-foreground max-w-md mb-6">
-              Upload your resume PDF to the <code className="px-1.5 py-0.5 rounded bg-muted text-xs">public/resume.pdf</code> folder to display it here.
-            </p>
-            <div className="flex items-center gap-2 text-xs text-muted-foreground">
-              <span className="w-2 h-2 rounded-full bg-primary/50 animate-pulse" />
-              View-only mode enabled
-            </div>
-          </div>
-
-          {/* Actual PDF embed - uncomment when PDF is available */}
-          {/* 
           <iframe
             src={`${pdfUrl}#toolbar=0&navpanes=0&scrollbar=1`}
             className="w-full h-full"
             title="Resume"
           />
-          */}
         </div>
       </div>
     </div>
