@@ -1,0 +1,661 @@
+/* Hero Section — Theme-Aware Premium Design */
+
+/* ========================================
+   LIGHT MODE (Default) — Elegant Ivory
+   ======================================== */
+:root {
+  --hero-bg: #F5F1EC;
+  --hero-accent: #6D001A;
+  --hero-secondary: #B5AC8A;
+  --hero-text: #1A1A1A;
+  --hero-text-muted: rgba(26, 26, 26, 0.6);
+  --hero-shape-color: #4A4A4A;
+  --hero-shape-opacity: 0.12;
+  --hero-orb-1: rgba(109, 0, 26, 0.08);
+  --hero-orb-2: rgba(181, 172, 138, 0.1);
+  --hero-scroll-color: #1A1A1A;
+  --hero-scroll-opacity: 0.7;
+}
+
+/* ========================================
+   DARK MODE — Deep Noir
+   ======================================== */
+.dark {
+  --hero-bg: #0D0D0D;
+  --hero-accent: #C73659;
+  --hero-secondary: #D4AF37;
+  --hero-text: #F5F1EC;
+  --hero-text-muted: rgba(245, 241, 236, 0.5);
+  --hero-shape-color: #D4AF37;
+  --hero-shape-opacity: 0.06;
+  --hero-orb-1: rgba(199, 54, 89, 0.15);
+  --hero-orb-2: rgba(212, 175, 55, 0.1);
+  --hero-scroll-color: #D4AF37;
+  --hero-scroll-opacity: 0.6;
+}
+
+/* ========================================
+   Hero Section Container
+   ======================================== */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--hero-bg);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.5s ease;
+}
+
+/* Animated Background */
+.hero-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* ========================================
+   LIGHT MODE — Minimal Lines Animation
+   ======================================== */
+.geometric-shape {
+  position: absolute;
+  border: 1px solid var(--hero-shape-color);
+  opacity: var(--hero-shape-opacity);
+  will-change: transform;
+  transform: translateZ(0);
+  transition: opacity 0.5s ease, border-color 0.5s ease;
+}
+
+/* Light mode shapes - with distinct animations */
+:root .shape-1 {
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  top: 10%;
+  left: -5%;
+  animation: floatCircle 18s ease-in-out infinite;
+}
+
+:root .shape-2 {
+  width: 200px;
+  height: 200px;
+  top: 60%;
+  right: 10%;
+  animation: floatSquare 22s ease-in-out infinite;
+}
+
+:root .shape-3 {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  bottom: 20%;
+  left: 15%;
+  animation: floatCircle 16s ease-in-out infinite reverse;
+}
+
+:root .shape-4 {
+  width: 250px;
+  height: 250px;
+  top: 5%;
+  right: 20%;
+  animation: floatDiamond 20s ease-in-out infinite;
+}
+
+:root .shape-5 {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  top: 40%;
+  left: 55%;
+  animation: pulseCircle 12s ease-in-out infinite;
+}
+
+:root .shape-6 {
+  width: 180px;
+  height: 180px;
+  bottom: 10%;
+  right: 30%;
+  animation: floatSquare 25s ease-in-out infinite reverse;
+}
+
+/* Light mode floating animations */
+@keyframes floatCircle {
+  0%, 100% { 
+    transform: translateY(0) translateX(0) scale(1); 
+  }
+  25% { 
+    transform: translateY(-20px) translateX(10px) scale(1.02); 
+  }
+  50% { 
+    transform: translateY(-30px) translateX(-5px) scale(1); 
+  }
+  75% { 
+    transform: translateY(-15px) translateX(-10px) scale(0.98); 
+  }
+}
+
+@keyframes floatSquare {
+  0%, 100% { 
+    transform: rotate(45deg) translateY(0) scale(1); 
+  }
+  33% { 
+    transform: rotate(50deg) translateY(-25px) scale(1.03); 
+  }
+  66% { 
+    transform: rotate(40deg) translateY(-15px) scale(0.97); 
+  }
+}
+
+@keyframes floatDiamond {
+  0%, 100% { 
+    transform: rotate(15deg) translateY(0) scale(1); 
+  }
+  50% { 
+    transform: rotate(20deg) translateY(-35px) scale(1.05); 
+  }
+}
+
+@keyframes pulseCircle {
+  0%, 100% { 
+    transform: scale(1); 
+    opacity: var(--hero-shape-opacity);
+  }
+  50% { 
+    transform: scale(1.15); 
+    opacity: calc(var(--hero-shape-opacity) * 2);
+  }
+}
+
+/* ========================================
+   DARK MODE — Glowing Orbs Animation
+   ======================================== */
+.dark .geometric-shape {
+  border-width: 2px;
+  box-shadow: 0 0 30px -10px var(--hero-shape-color);
+}
+
+.dark .shape-1 {
+  animation: floatDark1 15s ease-in-out infinite;
+}
+
+.dark .shape-2 {
+  animation: floatDark2 20s ease-in-out infinite;
+}
+
+.dark .shape-3 {
+  animation: floatDark1 18s ease-in-out infinite reverse;
+}
+
+.dark .shape-4 {
+  animation: floatDark2 25s ease-in-out infinite;
+}
+
+.dark .shape-5 {
+  animation: pulseDark 8s ease-in-out infinite;
+}
+
+.dark .shape-6 {
+  animation: floatDark1 22s ease-in-out infinite;
+}
+
+/* Dark mode floating animations - more dynamic */
+@keyframes floatDark1 {
+  0%, 100% { 
+    transform: translateY(0) scale(1); 
+    opacity: var(--hero-shape-opacity);
+  }
+  50% { 
+    transform: translateY(-25px) scale(1.02); 
+    opacity: calc(var(--hero-shape-opacity) * 1.5);
+  }
+}
+
+@keyframes floatDark2 {
+  0%, 100% { 
+    transform: translateY(0) rotate(45deg) scale(1); 
+  }
+  33% { 
+    transform: translateY(-20px) rotate(47deg) scale(1.03); 
+  }
+  66% { 
+    transform: translateY(-10px) rotate(43deg) scale(0.98); 
+  }
+}
+
+@keyframes pulseDark {
+  0%, 100% { 
+    transform: scale(1); 
+    opacity: var(--hero-shape-opacity);
+    box-shadow: 0 0 30px -10px var(--hero-shape-color);
+  }
+  50% { 
+    transform: scale(1.1); 
+    opacity: calc(var(--hero-shape-opacity) * 2);
+    box-shadow: 0 0 50px -5px var(--hero-shape-color);
+  }
+}
+
+/* ========================================
+   Ambient Orbs
+   ======================================== */
+.ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  will-change: transform, opacity;
+  transition: background 0.5s ease, opacity 0.5s ease;
+}
+
+.orb-1 {
+  width: 400px;
+  height: 400px;
+  background: var(--hero-orb-1);
+  top: -15%;
+  right: -10%;
+  animation: orbPulse1 12s ease-in-out infinite;
+}
+
+.orb-2 {
+  width: 350px;
+  height: 350px;
+  background: var(--hero-orb-2);
+  bottom: -10%;
+  left: -10%;
+  animation: orbPulse2 15s ease-in-out infinite;
+}
+
+@keyframes orbPulse1 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 1; }
+  50% { transform: translate(20px, 10px) scale(1.1); opacity: 0.7; }
+}
+
+@keyframes orbPulse2 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 1; }
+  50% { transform: translate(-15px, -20px) scale(1.15); opacity: 0.6; }
+}
+
+/* Dark mode orbs - more vibrant */
+.dark .orb-1 {
+  filter: blur(100px);
+  animation: orbGlow1 10s ease-in-out infinite;
+}
+
+.dark .orb-2 {
+  filter: blur(100px);
+  animation: orbGlow2 12s ease-in-out infinite;
+}
+
+@keyframes orbGlow1 {
+  0%, 100% { 
+    transform: translate(0, 0) scale(1); 
+    opacity: 1; 
+  }
+  50% { 
+    transform: translate(30px, -20px) scale(1.2); 
+    opacity: 0.8; 
+  }
+}
+
+@keyframes orbGlow2 {
+  0%, 100% { 
+    transform: translate(0, 0) scale(1); 
+    opacity: 1; 
+  }
+  50% { 
+    transform: translate(-25px, 15px) scale(1.25); 
+    opacity: 0.7; 
+  }
+}
+
+/* ========================================
+   Grid Overlay
+   ======================================== */
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, var(--hero-shape-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--hero-shape-color) 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: 0.02;
+  transition: opacity 0.5s ease;
+}
+
+.dark .grid-overlay {
+  opacity: 0.03;
+  animation: gridGlow 8s ease-in-out infinite;
+}
+
+@keyframes gridGlow {
+  0%, 100% { opacity: 0.03; }
+  50% { opacity: 0.05; }
+}
+
+/* ========================================
+   Content Container
+   ======================================== */
+.hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 2rem;
+  max-width: 900px;
+}
+
+/* Tagline */
+.hero-tagline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--hero-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeSlideUp 0.8s ease-out 0.1s forwards;
+  transition: color 0.5s ease;
+}
+
+.dark .hero-tagline {
+  color: var(--hero-secondary);
+}
+
+.hero-tagline-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--hero-accent);
+  animation: pulse 2s ease-in-out infinite;
+  transition: background 0.5s ease;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+/* Typography */
+.hero-heading {
+  font-size: clamp(2.75rem, 10vw, 5.5rem);
+  font-weight: 700;
+  color: var(--hero-text);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 0 0 1.5rem;
+  transition: color 0.5s ease;
+}
+
+.hero-heading-line {
+  display: block;
+  opacity: 0;
+  animation: fadeSlideUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-heading-line:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.hero-heading-line:nth-child(2) {
+  animation-delay: 0.35s;
+}
+
+.hero-heading-accent {
+  color: var(--hero-secondary);
+  position: relative;
+  transition: color 0.5s ease;
+}
+
+.dark .hero-heading-accent {
+  background: linear-gradient(135deg, var(--hero-secondary), var(--hero-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: var(--hero-text-muted);
+  font-weight: 400;
+  max-width: 540px;
+  margin: 0 auto 3rem;
+  line-height: 1.7;
+  opacity: 0;
+  animation: fadeSlideUp 0.8s ease-out 0.5s forwards;
+  transition: color 0.5s ease;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   CTA Buttons
+   ======================================== */
+.hero-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeSlideUp 0.8s ease-out 0.7s forwards;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 1rem 2rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  border-radius: 100px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border: none;
+}
+
+.hero-cta-primary {
+  background-color: var(--hero-accent);
+  color: #F5F1EC;
+}
+
+.hero-cta-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px -15px var(--hero-accent);
+}
+
+.dark .hero-cta-primary {
+  box-shadow: 0 0 30px -10px var(--hero-accent);
+}
+
+.dark .hero-cta-primary:hover {
+  box-shadow: 0 0 50px -5px var(--hero-accent);
+}
+
+.hero-cta-secondary {
+  background-color: transparent;
+  color: var(--hero-text);
+  border: 1px solid var(--hero-text-muted);
+}
+
+.hero-cta-secondary:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-color: var(--hero-secondary);
+  transform: translateY(-3px);
+}
+
+.dark .hero-cta-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.hero-cta:active {
+  transform: translateY(0);
+}
+
+.hero-cta-icon {
+  transition: transform 0.3s ease;
+}
+
+.hero-cta-primary:hover .hero-cta-icon {
+  transform: translateY(3px);
+}
+
+/* ========================================
+   Scroll Indicator
+   ======================================== */
+.scroll-indicator {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  opacity: 0;
+  animation: fadeIn 1s ease-out 1.2s forwards;
+}
+
+.scroll-indicator-mouse {
+  width: 24px;
+  height: 38px;
+  border: 2px solid var(--hero-scroll-color);
+  border-radius: 12px;
+  position: relative;
+  opacity: var(--hero-scroll-opacity);
+  transition: border-color 0.5s ease, opacity 0.5s ease;
+}
+
+.scroll-indicator-wheel {
+  width: 4px;
+  height: 8px;
+  background: var(--hero-scroll-color);
+  border-radius: 2px;
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scrollWheel 2s ease-in-out infinite;
+  transition: background 0.5s ease;
+}
+
+@keyframes scrollWheel {
+  0%, 100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    opacity: 0.4;
+    transform: translateX(-50%) translateY(10px);
+  }
+}
+
+.scroll-indicator-text {
+  font-size: 0.6875rem;
+  color: var(--hero-scroll-color);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 500;
+  opacity: var(--hero-scroll-opacity);
+  transition: color 0.5s ease, opacity 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Hero bottom fade */
+.hero-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 150px;
+  background: linear-gradient(to top, var(--hero-bg), transparent);
+  pointer-events: none;
+  z-index: 5;
+  transition: background 0.5s ease;
+}
+
+/* ========================================
+   Responsive — Mobile
+   ======================================== */
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .hero-tagline {
+    font-size: 0.6875rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-subtitle {
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-cta {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+    padding: 1.125rem 2rem;
+  }
+
+  .scroll-indicator {
+    bottom: 2rem;
+  }
+
+  .geometric-shape {
+    opacity: calc(var(--hero-shape-opacity) * 0.7);
+  }
+
+  .ambient-orb {
+    filter: blur(60px);
+  }
+
+  .shape-1 { width: 250px; height: 250px; }
+  .shape-2 { width: 150px; height: 150px; }
+  .shape-4 { width: 180px; height: 180px; }
+}
+
+/* ========================================
+   Reduced Motion
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  .geometric-shape,
+  .grid-overlay,
+  .scroll-indicator-wheel,
+  .ambient-orb,
+  .hero-tagline-dot {
+    animation: none;
+  }
+
+  .hero-heading-line,
+  .hero-tagline,
+  .hero-subtitle,
+  .hero-cta-group,
+  .scroll-indicator {
+    animation: none;
+    opacity: 1;
+  }
+}

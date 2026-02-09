@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Portfolio Design System — Minimal, Clean, Aesthetic
+   Colors: Grey Black, Burgundy, Dusty Olive, Ivory White
+   No gradients, no heavy shadows, no glassmorphism
+*/
+
+@layer base {
+  :root {
+    /* Light Mode — Ivory White base */
+    --background: 33 33% 94%;
+    --foreground: 0 0% 10%;
+
+    --card: 33 25% 96%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 33 33% 94%;
+    --popover-foreground: 0 0% 10%;
+
+    /* Burgundy accent */
+    --primary: 346 100% 21%;
+    --primary-foreground: 33 33% 94%;
+
+    /* Dusty Olive */
+    --secondary: 44 22% 62%;
+    --secondary-foreground: 0 0% 10%;
+
+    --muted: 33 15% 88%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 44 22% 62%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 33 15% 85%;
+    --input: 33 15% 85%;
+    --ring: 346 100% 21%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 33 33% 94%;
+    --sidebar-foreground: 0 0% 10%;
+    --sidebar-primary: 346 100% 21%;
+    --sidebar-primary-foreground: 33 33% 94%;
+    --sidebar-accent: 44 22% 62%;
+    --sidebar-accent-foreground: 0 0% 10%;
+    --sidebar-border: 33 15% 85%;
+    --sidebar-ring: 346 100% 21%;
+  }
+
+  .dark {
+    /* Dark Mode — Grey Black base */
+    --background: 0 0% 10%;
+    --foreground: 33 33% 94%;
+
+    --card: 0 0% 14%;
+    --card-foreground: 33 33% 94%;
+
+    --popover: 0 0% 14%;
+    --popover-foreground: 33 33% 94%;
+
+    /* Brighter Burgundy for dark mode visibility */
+    --primary: 346 85% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Brighter Dusty Olive for dark mode */
+    --secondary: 44 25% 45%;
+    --secondary-foreground: 33 33% 94%;
+
+    --muted: 0 0% 18%;
+    --muted-foreground: 33 15% 65%;
+
+    --accent: 44 25% 45%;
+    --accent-foreground: 33 33% 94%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 22%;
+    --input: 0 0% 22%;
+    --ring: 346 85% 45%;
+
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 33 33% 94%;
+    --sidebar-primary: 346 85% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 18%;
+    --sidebar-accent-foreground: 33 33% 94%;
+    --sidebar-border: 0 0% 22%;
+    --sidebar-ring: 346 85% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+
+  /* Smooth transitions for all interactive elements */
+  a, button, [role="button"] {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  /* Smooth section transitions */
+  section {
+    @apply transition-all duration-500 ease-out;
+  }
+}
+
+@layer utilities {
+  /* Scroll reveal animation helper */
+  .reveal {
+    @apply opacity-0 translate-y-4;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    @apply opacity-100 translate-y-0;
+  }
+
+  /* Animated Grid Background - GPU accelerated */
+  .grid-background {
+    background-image: 
+      linear-gradient(to right, hsl(var(--secondary)) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--secondary)) 1px, transparent 1px);
+    background-size: 80px 80px;
+    will-change: transform;
+    transform: translateZ(0);
+  }
+
+  /* Floating animations - simplified and GPU accelerated */
+  .animate-float-slow {
+    animation: floatSimple 30s ease-in-out infinite;
+    will-change: transform;
+    transform: translateZ(0);
+  }
+  .animate-float-medium {
+    animation: floatSimple 25s ease-in-out infinite;
+    animation-delay: -10s;
+    will-change: transform;
+    transform: translateZ(0);
+  }
+  .animate-float-fast {
+    animation: floatSimple 20s ease-in-out infinite;
+    animation-delay: -5s;
+    will-change: transform;
+    transform: translateZ(0);
+  }
+
+  @keyframes floatSimple {
+    0%, 100% {
+      transform: translateY(0) translateZ(0);
+    }
+    50% {
+      transform: translateY(-20px) translateZ(0);
+    }
+  }
+
+  /* Section stagger animation */
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .grid-background,
+  .animate-float-slow,
+  .animate-float-medium,
+  .animate-float-fast {
+    animation: none;
+  }
+  
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

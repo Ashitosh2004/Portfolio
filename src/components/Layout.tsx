@@ -1,0 +1,15 @@
+import { ReactNode } from "react";
+import Navbar from "./Navbar";
+import MobileNav from "./MobileNav";
+import Footer from "./Footer";
+
+const Layout = ({ children }: { children: ReactNode }) => (
+  <div className="min-h-screen flex flex-col bg-background">
+    <Navbar />
+    <MobileNav />
+    <main className="flex-1">{children}</main>
+    <Footer />
+  </div>
+);
+
+export default Layout;
